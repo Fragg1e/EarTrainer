@@ -25,6 +25,11 @@ namespace EarTrainer
             InitializeComponent();
         }
 
-       
+        private void Return_To_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new MainMenu());
+        }
+
+
     }
 }

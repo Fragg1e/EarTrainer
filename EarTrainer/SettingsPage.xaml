@@ -9,10 +9,11 @@
       Title="SettingsPage">
 
     <Grid Background="#FF373333">
-        <RadioButton Content="Easy" Margin="344,84,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="90" FontSize="30" HorizontalAlignment="Left"/>
-        <RadioButton Content="Medium" HorizontalAlignment="Left" Margin="476,85,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
-        <RadioButton Content="Hard" HorizontalAlignment="Left" Margin="658,84,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
-        <Label Content="Difficulty" HorizontalAlignment="Left" Margin="108,67,0,0" VerticalAlignment="Top" FontSize="40" Foreground="White" FontWeight="Bold"/>
+        <RadioButton Content="Easy" Margin="335,145,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="90" FontSize="30" HorizontalAlignment="Left"/>
+        <RadioButton Content="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30" Margin="0,225,0,0"/>
+        <RadioButton Content="Hard" HorizontalAlignment="Left" Margin="338,305,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
+        <Label Content="Difficulty" HorizontalAlignment="Left" Margin="99,128,0,0" VerticalAlignment="Top" FontSize="40" Foreground="White" FontWeight="Bold"/>
+        <Button x:Name="Return_To_Menu" Content="Main Menu&#xA;" HorizontalAlignment="Left" Margin="29,27,0,0" VerticalAlignment="Top" Height="59" Width="116" FontSize="20" Click="Return_To_Menu_Click"/>
 
 
 

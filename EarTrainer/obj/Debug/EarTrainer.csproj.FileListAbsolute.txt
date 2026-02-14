@@ -19,3 +19,24 @@ C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\obj\Debu
 C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\obj\Debug\QuizWindow.baml
 C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\obj\Debug\QuizPage.g.cs
 C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\obj\Debug\SettingsPage.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EarTrainer.exe.config
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EarTrainer.exe
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EarTrainer.pdb
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.csproj.AssemblyReference.cache
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\MainWindow.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\QuizPage.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\SettingsPage.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\App.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer_MarkupCompile.cache
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer_MarkupCompile.lref
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\MainWindow.baml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\QuizPage.baml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\SettingsPage.baml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.g.resources
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.Properties.Resources.resources
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.csproj.GenerateResource.cache
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.csproj.CoreCompileInputs.cache
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.exe
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.pdb
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\MainMenu.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\MainMenu.baml

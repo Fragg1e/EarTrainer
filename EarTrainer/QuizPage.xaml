@@ -8,7 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizPage">
 
-    <Grid>
-        
+    <Grid Background="#FF1C1427">
+        <Frame x:Name="QuizFrame"
+           NavigationUIVisibility="Hidden"/>
+
+        <Button Content="D" HorizontalAlignment="Left" Margin="628,333,0,0" VerticalAlignment="Top" Height="59" Width="116"/>
+        <Button Content="C" HorizontalAlignment="Left" Margin="434,333,0,0" VerticalAlignment="Top" Height="59" Width="116"/>
+        <Button Content="A" HorizontalAlignment="Left" Margin="50,333,0,0" VerticalAlignment="Top" Height="59" Width="116"/>
+        <Button Content="B" HorizontalAlignment="Left" Margin="225,333,0,0" VerticalAlignment="Top" Height="59" Width="116"/>
+        <Label Content="Interval Quiz" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="45" Foreground="White"/>
+        <Button Content="Play Sound again" HorizontalAlignment="Left" Margin="50,166,0,0" VerticalAlignment="Top" Height="59" Width="116"/>
+        <Button x:Name="Return_To_Menu" Content="Main Menu&#xD;&#xA;" HorizontalAlignment="Left" Margin="50,15,0,0" VerticalAlignment="Top" Height="59" Width="116" FontSize="20" Click="Return_To_Menu_Click"/>
+
     </Grid>
 </Page>

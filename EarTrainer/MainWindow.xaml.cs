@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,20 +24,14 @@ namespace EarTrainer
         public MainWindow()
         {
             InitializeComponent();
-
-            
-            
-            
+            MainFrame.Navigate(new MainMenu());
 
             IntervalQuestion question = new IntervalQuestion();
             
             Console.WriteLine(question.ToString());
         }
 
-        private void StartBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
        
 

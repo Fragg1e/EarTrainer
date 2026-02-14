@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\App.xaml
-3-139985203
+4-1669832071
 
-1374341690
+14-732964266
 13-38814620
-MainWindow.xaml;QuizPage.xaml;SettingsPage.xaml;
+MainMenu.xaml;MainWindow.xaml;QuizPage.xaml;SettingsPage.xaml;
 
-True
+False
 

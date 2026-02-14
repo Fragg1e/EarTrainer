@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\obj\Debug\
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\
 EarTrainer
 none
 false
 DEBUG;TRACE
-C:\Users\woodw\OneDrive - Atlantic TU\Year 2\Programming\OOD\EarTrainer\App.xaml
-3-139985203
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\App.xaml
+4-1669832071
 
-141996119811
+151188813855
 13-38814620
-MainWindow.xaml;QuizPage.xaml;SettingsPage.xaml;
+MainMenu.xaml;MainWindow.xaml;QuizPage.xaml;SettingsPage.xaml;
 
 True
 
