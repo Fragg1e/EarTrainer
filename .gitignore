@@ -1,6 +1,4 @@
-/.vs
-/EarTrainer/obj
-/EarTrainer/obj
-/EarTrainer/obj
-/EarTrainer/.vs
-/EarTrainer/obj
+EarTrainer/obj
+EarTrainer\obj
+.vs/
+
