@@ -13,12 +13,12 @@ namespace EarTrainer
         private static WaveOutEvent output = new WaveOutEvent();
         private static FadeInOutSampleProvider musicFader;
 
-        public static void PlayMusic(string file, bool fadeIn = true)
+        public static void PlaySound(string file)
         {
             output.Stop();
-            var reader = new AudioFileReader($@"..\..\..\sound/{file}.wav"); //gets the audio file        
+            var reader = new AudioFileReader($@"..\..\sounds/{file}.wav"); //gets the audio file        
 
-            musicFader = new FadeInOutSampleProvider(reader, fadeIn); //creates the fader
+            musicFader = new FadeInOutSampleProvider(reader); //creates the fader
 
             reader.Volume = 0.7f;
 

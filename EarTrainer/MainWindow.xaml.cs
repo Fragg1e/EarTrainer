@@ -24,6 +24,9 @@ namespace EarTrainer
         public MainWindow()
         {
             InitializeComponent();
+
+            Sound.PlaySound("a_str_pick");
+
             MainFrame.Navigate(new MainMenu());
 
             IntervalQuestion question = new IntervalQuestion();
