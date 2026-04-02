@@ -9,39 +9,44 @@ namespace EarTrainer
     public class Quiz
     {
         public Question[] Questions { get; set; }
+        public int CurrentQuestionIndex { get; set; }
+        public int Score { get; set; }
 
 
         public Quiz()
         {
-            Questions = new IntervalQuestion[];
-        }
+            Questions = new Question[10];
 
-        public void Round()
-        {
-            foreach (IntervalQuestion question in Questions)
+            for (int i = 0; i < Questions.Length; i++)
             {
-                var note1 = question.Interval.Notes.Item1.ToString();
-                var note2 = question.Interval.Notes.Item2.ToString();
-
-                Sound.PlaySound(note1);
-                Sound.PlaySound(note2);
-
-                Console.WriteLine(note1, note2);
-
-                string guess = Console.ReadLine();
-
-                if (Int32.Parse(guess) == question.Interval.Number) 
-                {
-                    Console.WriteLine("Correct!");
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect. The correct answer was "  + question.Interval.Number);
-                }                
+                Questions[i] = new Question();
             }
-         
-        }
-    }
 
-   
+            CurrentQuestionIndex = 0;
+            Score = 0;
+        }
+
+        public Question GetCurrentQuestion()
+        {
+            if (CurrentQuestionIndex < Questions.Length)
+            {
+                return Questions[CurrentQuestionIndex];
+            }
+
+            return null;
+
+        }
+
+        public void MoveToNextQuestion()
+        {
+            CurrentQuestionIndex++;
+        }
+
+        public bool IsFinished()
+        {
+            return CurrentQuestionIndex >= Questions.Length;
+        }
+
+        
+    }
 }

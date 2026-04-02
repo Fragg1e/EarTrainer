@@ -31,22 +31,11 @@ namespace EarTrainer
             { 11, "B"  }
         };
 
-
-        public static Note GetRandomNote()
+        public Note()
         {
-            
             int num = rnd.Next(notes.Count);
-
-            Note note = new Note()
-            {
-                Name = notes[num],
-                Number = num
-            };
-
-            return note;
+            Name = notes[num];
+            Number = num;
         }
-
-
     }
-
 }

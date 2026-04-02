@@ -25,13 +25,11 @@ namespace EarTrainer
         {
             InitializeComponent();
 
-            Sound.PlaySound("a_str_pick");
+            
 
             MainFrame.Navigate(new MainMenu());
 
-            IntervalQuestion question = new IntervalQuestion();
             
-            Console.WriteLine(question.ToString());
         }
 
         

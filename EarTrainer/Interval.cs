@@ -5,38 +5,56 @@ namespace EarTrainer
     public class Interval
     {
         public Tuple<Note, Note> Notes { get; set; }
-        public int Number { get; set; }
+        public string Name { get; set; }
 
-        public Interval(Tuple<Note, Note> notes)
+        public string GetIntervalName(int distance)
         {
-            Notes = notes;
-            Number = GetIntervalNumber(notes.Item1, notes.Item2);
+            switch (distance)
+            {
+                case 0: return "Unison";
+                case 1: return "Minor 2nd";
+                case 2: return "Major 2nd";
+                case 3: return "Minor 3rd";
+                case 4: return "Major 3rd";
+                case 5: return "Perfect 4th";
+                case 6: return "Tritone";
+                case 7: return "Perfect 5th";
+                case 8: return "Minor 6th";
+                case 9: return "Major 6th";
+                case 10: return "Minor 7th";
+                case 11: return "Major 7th";
+                case 12: return "Octave";
+                default: return "Unknown";   
+            }
         }
 
-        private static int GetIntervalNumber(Note from, Note to)
+        public Interval()
         {
-            int a = from.Number;
-            int b = to.Number;
-            return (b - a + 12) % 12;
+            Notes = GetRandomInterval();
+            Name = CalcInterval(Notes.Item1, Notes.Item2);
         }
 
-        public static Interval GetRandomInterval()
+        private string CalcInterval(Note from, Note to)
         {
-            Note note1 = Note.GetRandomNote();
+            int distance = (to.Number - from.Number + 12) % 12;
+            return GetIntervalName(distance);
+        }
+
+        private Tuple<Note, Note> GetRandomInterval()
+        {
+            Note note1 = new Note();
             Console.WriteLine($"Note 1: {note1.Name}");
 
-            Note note2 = Note.GetRandomNote();
+            Note note2 = new Note();
             Console.WriteLine($"Note 2: {note2.Name}");
 
             while (note1 == note2)
             {
-                note2 = Note.GetRandomNote();
+                note2 = new Note();
             }
 
-            int number = GetIntervalNumber(note1, note2);
-
             Tuple<Note, Note> interval = Tuple.Create(note1, note2);
-            return new Interval(interval);
+            return interval;
 
         }
     }

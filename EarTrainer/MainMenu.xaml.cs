@@ -27,6 +27,11 @@ namespace EarTrainer
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new QuizPage());
+            
+
+
+
+
 
         }
 

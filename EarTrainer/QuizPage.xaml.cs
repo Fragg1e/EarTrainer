@@ -1,33 +1,137 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EarTrainer
 {
-    /// <summary>
-    /// Interaction logic for QuizPage.xaml
-    /// </summary>
     public partial class QuizPage : Page
     {
+        private Quiz quiz;
+        private int currentQuestionIndex = 0;
+
         public QuizPage()
         {
             InitializeComponent();
+
+            quiz = new Quiz();
+            LoadCurrentQuestion();
+        }
+
+        private async void LoadCurrentQuestion()
+        {
+            if (quiz == null || quiz.Questions == null || currentQuestionIndex >= quiz.Questions.Length)
+            {
+                ShowFinalResult();
+                return;
+            }
+
+            Question currentQuestion = quiz.Questions[currentQuestionIndex];
+
+            if (currentQuestion == null)
+            {
+                ShowFinalResult();
+                return;
+            }
+
+            QuestionNumberText.Text = "Question " + (currentQuestionIndex + 1) + " of " + quiz.Questions.Length;
+            FeedbackText.Text = "";
+
+            AnswerButton1.Content = currentQuestion.Options[0];
+            AnswerButton2.Content = currentQuestion.Options[1];
+            AnswerButton3.Content = currentQuestion.Options[2];
+            AnswerButton4.Content = currentQuestion.Options[3];
+
+            await PlayCurrentQuestionSounds();
+        }
+
+        private async Task PlayCurrentQuestionSounds()
+        {
+            Question currentQuestion = quiz.Questions[currentQuestionIndex];
+
+            if (currentQuestion == null)
+            {
+                return;
+            }
+
+            DisableAnswerButtons();
+            Console.WriteLine("Question: " + currentQuestion.ToString());
+            await PlayNote(currentQuestion.Interval.Notes.Item1);
+            await Task.Delay(500);
+            await PlayNote(currentQuestion.Interval.Notes.Item2);
+
+            EnableAnswerButtons();
+        }
+
+        private async Task PlayNote(Note note)
+        {
+            // Replace this with your real audio code later
+            await Task.Delay(500);
+        }
+
+        private async void ReplayButton_Click(object sender, RoutedEventArgs e)
+        {
+            FeedbackText.Text = "Replaying...";
+            await PlayCurrentQuestionSounds();
+            FeedbackText.Text = "";
+        }
+
+        private void AnswerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            if (clickedButton == null)
+            {
+                return;
+            }
+
+            string selectedAnswer = clickedButton.Content.ToString();
+            Question currentQuestion = quiz.Questions[currentQuestionIndex];
+
+            if (selectedAnswer == currentQuestion.CorrectAnswer)
+            {
+                FeedbackText.Text = "Correct!";
+            }
+            else
+            {
+                FeedbackText.Text = "Wrong! Correct answer: " + currentQuestion.CorrectAnswer;
+            }
+
+            currentQuestionIndex++;
+            LoadCurrentQuestion();
+        }
+
+        private void DisableAnswerButtons()
+        {
+            AnswerButton1.IsEnabled = false;
+            AnswerButton2.IsEnabled = false;
+            AnswerButton3.IsEnabled = false;
+            AnswerButton4.IsEnabled = false;
+        }
+
+        private void EnableAnswerButtons()
+        {
+            AnswerButton1.IsEnabled = true;
+            AnswerButton2.IsEnabled = true;
+            AnswerButton3.IsEnabled = true;
+            AnswerButton4.IsEnabled = true;
+        }
+
+        private void ShowFinalResult()
+        {
+            QuestionNumberText.Text = "Quiz complete!";
+            FeedbackText.Text = "You finished the quiz.";
+
+            AnswerButton1.Visibility = Visibility.Collapsed;
+            AnswerButton2.Visibility = Visibility.Collapsed;
+            AnswerButton3.Visibility = Visibility.Collapsed;
+            AnswerButton4.Visibility = Visibility.Collapsed;
+            ReplayButton.Visibility = Visibility.Collapsed;
         }
 
         private void Return_To_Menu_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new MainMenu());
+            NavigationService.GoBack();
         }
     }
 }
