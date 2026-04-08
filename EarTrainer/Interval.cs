@@ -4,8 +4,11 @@ namespace EarTrainer
 {
     public class Interval
     {
-        public Tuple<Note, Note> Notes { get; set; }
+        public Note FirstNote { get; set; }
+        public Note SecondNote { get; set; }
         public string Name { get; set; }
+
+        private static Random random;
 
         public string GetIntervalName(int distance)
         {
@@ -30,32 +33,28 @@ namespace EarTrainer
 
         public Interval()
         {
-            Notes = GetRandomInterval();
-            Name = CalcInterval(Notes.Item1, Notes.Item2);
-        }
+            FirstNote = new Note();
+            SecondNote = new Note();
 
-        private string CalcInterval(Note from, Note to)
-        {
-            int distance = (to.Number - from.Number + 12) % 12;
-            return GetIntervalName(distance);
-        }
-
-        private Tuple<Note, Note> GetRandomInterval()
-        {
-            Note note1 = new Note();
-            Console.WriteLine($"Note 1: {note1.Name}");
-
-            Note note2 = new Note();
-            Console.WriteLine($"Note 2: {note2.Name}");
-
-            while (note1 == note2)
+            while (FirstNote == SecondNote)
             {
-                note2 = new Note();
+                SecondNote = new Note();
             }
 
-            Tuple<Note, Note> interval = Tuple.Create(note1, note2);
-            return interval;
+            Name = CalcInterval(FirstNote, SecondNote);
+        }
 
+        public Interval(Note firstNote, Note secondNote)
+        {
+            FirstNote = firstNote;
+            SecondNote = secondNote;
+            Name = CalcInterval(FirstNote, SecondNote);
+        }
+
+        private string CalcInterval(Note first, Note second)
+        {
+            int distance = (first.Number - second.Number + 12) % 12;
+            return GetIntervalName(distance);
         }
     }
 }

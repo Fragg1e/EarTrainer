@@ -56,17 +56,11 @@ namespace EarTrainer
 
             DisableAnswerButtons();
             Console.WriteLine("Question: " + currentQuestion.ToString());
-            await PlayNote(currentQuestion.Interval.Notes.Item1);
-            await Task.Delay(500);
-            await PlayNote(currentQuestion.Interval.Notes.Item2);
+            Sound.PlayNote(currentQuestion.Interval.FirstNote.Name);
+            await Task.Delay(1000);
+            Sound.PlayNote(currentQuestion.Interval.SecondNote.Name);
 
             EnableAnswerButtons();
-        }
-
-        private async Task PlayNote(Note note)
-        {
-            // Replace this with your real audio code later
-            await Task.Delay(500);
         }
 
         private async void ReplayButton_Click(object sender, RoutedEventArgs e)

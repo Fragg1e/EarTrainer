@@ -73,7 +73,7 @@ namespace EarTrainer
 
         public override string ToString()
         {
-            return $"Interval: {Interval.Notes.Item1.Name} to {Interval.Notes.Item2.Name} = {Interval.Name}";
+            return $"Interval: {Interval.FirstNote.Name} to {Interval.SecondNote.Name} = {Interval.Name}";
         }
 
 
