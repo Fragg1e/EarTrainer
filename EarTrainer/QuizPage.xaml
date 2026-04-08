@@ -50,8 +50,16 @@
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="Center"
-                   Margin="0,440,0,0"
+                   Margin="0,203,0,0"
                    VerticalAlignment="Top"/>
+
+        <TextBlock x:Name="Score"
+            Foreground="White"
+            FontSize="20"
+            HorizontalAlignment="Left"
+            Margin="648,137,0,0"
+            VerticalAlignment="Top" Width="119" Height="53"/>
+
 
         <Button x:Name="Return_To_Menu"
                 Content="Main Menu"

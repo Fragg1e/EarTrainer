@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using System.Windows;
 
 namespace EarTrainer
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            Database.SetInitializer(
+                new CreateDatabaseIfNotExists<EarTrainerContext>());
+
+            using (EarTrainerContext db = new EarTrainerContext())
+            {
+                db.Database.Initialize(false);
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace EarTrainer
 
         public Quiz()
         {
-            Questions = new Question[10];
+            Questions = new Question[Properties.Settings.Default.NumberOfQuestions];
 
             for (int i = 0; i < Questions.Length; i++)
             {

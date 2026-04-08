@@ -61,3 +61,7 @@ C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\NAudio.WinMM.xml
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Security.AccessControl.xml
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer.csproj.Up2Date
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.dll
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.xml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.SqlServer.xml

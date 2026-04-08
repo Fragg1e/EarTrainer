@@ -36,6 +36,7 @@ namespace EarTrainer
 
             QuestionNumberText.Text = "Question " + (currentQuestionIndex + 1) + " of " + quiz.Questions.Length;
             FeedbackText.Text = "";
+            Score.Text = "Score: " + quiz.Score;
 
             AnswerButton1.Content = currentQuestion.Options[0];
             AnswerButton2.Content = currentQuestion.Options[1];
@@ -56,9 +57,9 @@ namespace EarTrainer
 
             DisableAnswerButtons();
             Console.WriteLine("Question: " + currentQuestion.ToString());
-            Sound.PlayNote(currentQuestion.Interval.FirstNote.Name);
+            Sound.PlaySound(currentQuestion.Interval.FirstNote.Name);
             await Task.Delay(1000);
-            Sound.PlayNote(currentQuestion.Interval.SecondNote.Name);
+            Sound.PlaySound(currentQuestion.Interval.SecondNote.Name);
 
             EnableAnswerButtons();
         }
@@ -70,7 +71,7 @@ namespace EarTrainer
             FeedbackText.Text = "";
         }
 
-        private void AnswerButton_Click(object sender, RoutedEventArgs e)
+        private async void AnswerButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
 
@@ -84,12 +85,17 @@ namespace EarTrainer
 
             if (selectedAnswer == currentQuestion.CorrectAnswer)
             {
+                quiz.Score++;
+                Sound.PlaySound("correct");
                 FeedbackText.Text = "Correct!";
             }
             else
             {
+                Sound.PlaySound("incorrect");
                 FeedbackText.Text = "Wrong! Correct answer: " + currentQuestion.CorrectAnswer;
             }
+
+            await Task.Delay(2000);
 
             currentQuestionIndex++;
             LoadCurrentQuestion();
@@ -114,7 +120,22 @@ namespace EarTrainer
         private void ShowFinalResult()
         {
             QuestionNumberText.Text = "Quiz complete!";
-            FeedbackText.Text = "You finished the quiz.";
+            QuestionNumberText.Text = "Quiz complete!";
+            FeedbackText.Text = $"Final score: {quiz.Score} / {quiz.Questions.Length}";
+
+            
+            using (EarTrainerContext db = new EarTrainerContext())
+            {
+                HighScore highScore = new HighScore();
+                highScore.PlayerName = "Player1"; 
+                highScore.Score = quiz.Score;
+                highScore.TotalQuestions = quiz.Questions.Length;
+                highScore.Difficulty = Properties.Settings.Default.Difficulty;
+                highScore.DatePlayed = DateTime.Now;
+
+                db.HighScores.Add(highScore);
+                db.SaveChanges();
+            }
 
             AnswerButton1.Visibility = Visibility.Collapsed;
             AnswerButton2.Visibility = Visibility.Collapsed;

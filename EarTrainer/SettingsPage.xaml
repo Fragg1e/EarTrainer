@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EarTrainer"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="SettingsPage">
 
     <Grid Background="#FF373333">
@@ -29,45 +29,45 @@
 
         <Label Content="Difficulty"
                HorizontalAlignment="Left"
-               Margin="99,120,0,0"
+               Margin="99,110,0,0"
                VerticalAlignment="Top"
-               FontSize="40"
+               FontSize="36"
                Foreground="White"
                FontWeight="Bold"/>
 
-        <StackPanel Margin="335,130,0,0"
+        <StackPanel Margin="335,115,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top">
             <RadioButton x:Name="EasyRadioButton"
                          Content="Easy"
                          GroupName="DifficultyGroup"
                          Foreground="White"
-                         FontSize="30"
-                         Margin="0,10,0,10"
+                         FontSize="26"
+                         Margin="0,6,0,6"
                          Checked="Difficulty_Checked"/>
 
             <RadioButton x:Name="MediumRadioButton"
                          Content="Medium"
                          GroupName="DifficultyGroup"
                          Foreground="White"
-                         FontSize="30"
-                         Margin="0,10,0,10"
+                         FontSize="26"
+                         Margin="0,6,0,6"
                          Checked="Difficulty_Checked"/>
 
             <RadioButton x:Name="HardRadioButton"
                          Content="Hard"
                          GroupName="DifficultyGroup"
                          Foreground="White"
-                         FontSize="30"
-                         Margin="0,10,0,10"
+                         FontSize="26"
+                         Margin="0,6,0,6"
                          Checked="Difficulty_Checked"/>
         </StackPanel>
 
         <Label Content="Volume"
                HorizontalAlignment="Left"
-               Margin="99,310,0,0"
+               Margin="99,255,0,0"
                VerticalAlignment="Top"
-               FontSize="40"
+               FontSize="36"
                Foreground="White"
                FontWeight="Bold"/>
 
@@ -78,7 +78,7 @@
                 Width="250"
                 Height="40"
                 HorizontalAlignment="Left"
-                Margin="335,320,0,0"
+                Margin="335,262,0,0"
                 VerticalAlignment="Top"
                 ValueChanged="VolumeSlider_ValueChanged"/>
 
@@ -86,7 +86,36 @@
                    Text="50%"
                    Foreground="White"
                    FontSize="24"
-                   Margin="600,320,0,0"
+                   Margin="600,262,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
+
+        <Label Content="Questions"
+               HorizontalAlignment="Left"
+               Margin="99,345,0,0"
+               VerticalAlignment="Top"
+               FontSize="36"
+               Foreground="White"
+               FontWeight="Bold"/>
+
+        <Slider x:Name="QuestionCountSlider"
+                Minimum="3"
+                Maximum="20"
+                Value="10"
+                TickFrequency="1"
+                IsSnapToTickEnabled="True"
+                Width="250"
+                Height="40"
+                HorizontalAlignment="Left"
+                Margin="335,352,0,0"
+                VerticalAlignment="Top"
+                ValueChanged="QuestionCountSlider_ValueChanged"/>
+
+        <TextBlock x:Name="QuestionCountTextBlock"
+                   Text="10"
+                   Foreground="White"
+                   FontSize="24"
+                   Margin="600,352,0,0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"/>
     </Grid>
