@@ -8,7 +8,9 @@ namespace EarTrainer
     {
         public Interval Interval { get; set; }
         public string CorrectAnswer {  get; set; }
-        public string[] Options {  get; set; }
+        public List<string> Options {  get; set; }
+
+        public static Random random = new Random();
 
         List<string> allOptions = new List<string>
         {
@@ -34,25 +36,23 @@ namespace EarTrainer
             Options = GenerateOptions();
         }
 
-        public static void Shuffle<T>(T[] array)
+        public static void Shuffle(List<string> array)
         {
-            Random random = new Random();
+            
 
-            for (int i = array.Length - 1; i > 0; i--)
+            for (int i = array.Count() - 1; i > 0; i--)
             {
                 int j = random.Next(i + 1);
 
                 // swap
-                T temp = array[i];
+                string temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
             }
         }
 
-        private string[] GenerateOptions()
+        private List<string> GenerateOptions()
         {
-            Random random = new Random();
-
             List<string> selected = new List<string>();
             selected.Add(CorrectAnswer);
 
@@ -64,7 +64,7 @@ namespace EarTrainer
                     selected.Add(option);
                 }
             }
-            selected = selected.ToArray();
+            
             Shuffle(selected);
             return selected;
 
