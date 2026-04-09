@@ -21,8 +21,21 @@
                NavigationUIVisibility="Hidden"/>
 
         <Label Content="Ear Trainer" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Height="80" Width="400" FontFamily="Bahnschrift Light" FontSize="75" Foreground="White"/>
-        <Button x:Name="StartBtn" Content="Start" HorizontalAlignment="Left" Height="100" Margin="100,275,0,0" VerticalAlignment="Top" Width="200" FontFamily="Bahnschrift SemiBold" Click="StartBtn_Click" FontSize="40" Background="#FFA9A6AC" Panel.ZIndex="5"/>
-        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Height="100" Margin="512,275,0,0" VerticalAlignment="Top" Width="200" FontFamily="Bahnschrift SemiBold" FontSize="40" Background="#FFA9A6AC" Panel.ZIndex="5" Click="SettingsBtn_Click"/>
+        <Button x:Name="StartBtn" Content="Start" HorizontalAlignment="Left" Height="100" Margin="48,275,0,0" VerticalAlignment="Top" Width="200" FontFamily="Bahnschrift SemiBold" Click="StartBtn_Click" FontSize="40" Background="#FFA9A6AC" Panel.ZIndex="5"/>
+
+        <Button x:Name="HighScoresBtn"
+        Content="High Scores"
+        HorizontalAlignment="Center"
+        Height="100"
+        Margin="0,275,0,0"
+        VerticalAlignment="Top"
+        Width="200"
+        FontFamily="Bahnschrift SemiBold"
+        FontSize="40"
+        Background="#FFA9A6AC"
+        Panel.ZIndex="5"
+        Click="HighScoresBtn_Click"/>
+        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Height="100" Margin="560,275,0,0" VerticalAlignment="Top" Width="200" FontFamily="Bahnschrift SemiBold" FontSize="40" Background="#FFA9A6AC" Panel.ZIndex="5" Click="SettingsBtn_Click"/>
 
 
     </Grid>

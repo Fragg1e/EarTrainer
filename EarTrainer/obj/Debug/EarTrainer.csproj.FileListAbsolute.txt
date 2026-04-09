@@ -65,3 +65,9 @@ C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.xml
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\HighScoresPage.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\HighScoresPage.baml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Data.SQLite.dll
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\e_sqlite3.dll
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer_Content.g.cs

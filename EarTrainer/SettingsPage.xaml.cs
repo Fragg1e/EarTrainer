@@ -28,7 +28,7 @@ namespace EarTrainer
                 HardRadioButton.IsChecked = true;
             }
 
-            VolumeSlider.Value = Properties.Settings.Default.Volume;
+            VolumeSlider.Value = Properties.Settings.Default.Volume * 100;
             VolumeTextBlock.Text = ((int)VolumeSlider.Value).ToString() + "%";
 
             QuestionCountSlider.Value = Properties.Settings.Default.NumberOfQuestions;

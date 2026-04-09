@@ -73,6 +73,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>packages\System.Data.SQLite.2.0.2\lib\net471\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>packages\System.Data.SQLite.EF6.2.0.2\lib\net471\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -99,8 +105,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Chord.cs" />
+    <Compile Include="DatabaseHelper.cs" />
     <Compile Include="EarTrainerContext.cs" />
     <Compile Include="Highscore.cs" />
+    <Compile Include="HighScoresPage.xaml.cs">
+      <DependentUpon>HighScoresPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interval.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -115,6 +125,10 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sound.cs" />
+    <Page Include="HighScoresPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,7 +177,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="settings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\SourceGear.sqlite3.3.50.4.5\runtimes\win-x86\native\e_sqlite3.dll">
+      <Link>e_sqlite3.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

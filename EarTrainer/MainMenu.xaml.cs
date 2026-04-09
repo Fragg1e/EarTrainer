@@ -39,5 +39,10 @@ namespace EarTrainer
         {
             NavigationService?.Navigate(new SettingsPage());
         }
+
+        private void HighScoresBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new HighScoresPage());
+        }
     }
 }

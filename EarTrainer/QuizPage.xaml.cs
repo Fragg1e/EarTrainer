@@ -9,6 +9,7 @@ namespace EarTrainer
     {
         private Quiz quiz;
         private int currentQuestionIndex = 0;
+        private bool scoreSaved = false;
 
         public QuizPage()
         {
@@ -120,14 +121,39 @@ namespace EarTrainer
         private void ShowFinalResult()
         {
             QuestionNumberText.Text = "Quiz complete!";
-            QuestionNumberText.Text = "Quiz complete!";
             FeedbackText.Text = $"Final score: {quiz.Score} / {quiz.Questions.Length}";
+            Score.Text = "Score: " + quiz.Score;
 
-            
+            AnswerButton1.Visibility = Visibility.Collapsed;
+            AnswerButton2.Visibility = Visibility.Collapsed;
+            AnswerButton3.Visibility = Visibility.Collapsed;
+            AnswerButton4.Visibility = Visibility.Collapsed;
+            ReplayButton.Visibility = Visibility.Collapsed;
+            NamePromptText.Visibility = Visibility.Visible;
+            PlayerNameTextBox.Visibility = Visibility.Visible;
+            SaveScoreButton.Visibility = Visibility.Visible;
+            PlayerNameTextBox.Focus();
+        }
+
+        private void SaveScoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (scoreSaved)
+            {
+                return;
+            }
+
+            string playerName = PlayerNameTextBox.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(playerName))
+            {
+                FeedbackText.Text = "Enter a name first.";
+                return;
+            }
+
             using (EarTrainerContext db = new EarTrainerContext())
             {
                 HighScore highScore = new HighScore();
-                highScore.PlayerName = "Player1"; 
+                highScore.PlayerName = playerName;
                 highScore.Score = quiz.Score;
                 highScore.TotalQuestions = quiz.Questions.Length;
                 highScore.Difficulty = Properties.Settings.Default.Difficulty;
@@ -137,11 +163,10 @@ namespace EarTrainer
                 db.SaveChanges();
             }
 
-            AnswerButton1.Visibility = Visibility.Collapsed;
-            AnswerButton2.Visibility = Visibility.Collapsed;
-            AnswerButton3.Visibility = Visibility.Collapsed;
-            AnswerButton4.Visibility = Visibility.Collapsed;
-            ReplayButton.Visibility = Visibility.Collapsed;
+            scoreSaved = true;
+            FeedbackText.Text = "Score saved for " + playerName;
+            PlayerNameTextBox.IsEnabled = false;
+            SaveScoreButton.IsEnabled = false;
         }
 
         private void Return_To_Menu_Click(object sender, RoutedEventArgs e)
