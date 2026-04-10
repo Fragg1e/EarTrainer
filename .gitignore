@@ -3,16 +3,4 @@
 **/bin/
 **/obj/
 
-*.user
-*.suo
-*.cache
-*.pdb
-
-nuget.exe
-temp_app_dump.txt
-
-packages/SourceGear.sqlite3.3.50.4.5/
-packages/System.Data.SQLite.2.0.2/
-packages/System.Data.SQLite.EF6.2.0.2/
-
-EarTrainer/bin/Debug/EarTrainer.db
+/EarTrainer/obj
