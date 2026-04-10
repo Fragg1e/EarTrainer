@@ -59,7 +59,7 @@ namespace EarTrainer
             DisableAnswerButtons();
             Console.WriteLine("Question: " + currentQuestion.ToString());
             Sound.PlaySound(currentQuestion.Interval.FirstNote.Name);
-            await Task.Delay(1000);
+            await Task.Delay(1300);
             Sound.PlaySound(currentQuestion.Interval.SecondNote.Name);
 
             EnableAnswerButtons();

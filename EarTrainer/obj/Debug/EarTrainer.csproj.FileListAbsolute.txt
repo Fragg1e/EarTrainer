@@ -71,3 +71,5 @@ C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Data.SQLi
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\bin\Debug\e_sqlite3.dll
 C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\EarTrainer_Content.g.cs
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\Styles.baml
+C:\Users\woodw\Documents\GitHub\EarTrainer\EarTrainer\obj\Debug\App.baml
