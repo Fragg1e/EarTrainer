@@ -1,3 +1,4 @@
+using System.Data.Entity;
 using System.Windows;
 
 namespace EarTrainer
@@ -7,7 +8,13 @@ namespace EarTrainer
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            DatabaseHelper.Initialize();
+
+            Database.SetInitializer(new CreateDatabaseIfNotExists<EarTrainerContext>());
+
+            using (var db = new EarTrainerContext())
+            {
+                db.Database.Initialize(false);
+            }
         }
     }
 }

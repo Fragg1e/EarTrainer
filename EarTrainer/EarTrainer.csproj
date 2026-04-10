@@ -105,7 +105,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Chord.cs" />
-    <Compile Include="DatabaseHelper.cs" />
     <Compile Include="EarTrainerContext.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="HighScoresPage.xaml.cs">
