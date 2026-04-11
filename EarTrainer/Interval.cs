@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
 namespace EarTrainer
 {
@@ -8,9 +9,13 @@ namespace EarTrainer
         public Note SecondNote { get; set; }
         public string Name { get; set; }
 
-        private static Random random;
+        private static Random random = new Random();
 
-        public string GetIntervalName(int distance)
+        private static readonly IReadOnlyList<int> EasyDistances = new[] { 0, 1, 2, 3, 4, 5, 7 };
+        private static readonly IReadOnlyList<int> MediumDistances = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        private static readonly IReadOnlyList<int> HardDistances = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+
+        public static string GetIntervalName(int distance)
         {
             switch (distance)
             {
@@ -27,21 +32,22 @@ namespace EarTrainer
                 case 10: return "Minor 7th";
                 case 11: return "Major 7th";
                 case 12: return "Octave";
-                default: return "Unknown";   
+                default: return "Unknown";
             }
         }
 
         public Interval()
+            : this(Properties.Settings.Default.Difficulty)
+        {
+        }
+
+        public Interval(string difficulty)
         {
             FirstNote = new Note();
-            SecondNote = new Note();
-
-            while (FirstNote == SecondNote)
-            {
-                SecondNote = new Note();
-            }
-
-            Name = CalcInterval(FirstNote, SecondNote);
+            int distance = GetRandomDistance(difficulty);
+            int secondNoteNumber = (FirstNote.Number - distance + 12) % 12;
+            SecondNote = new Note(secondNoteNumber);
+            Name = GetIntervalName(distance);
         }
 
         public Interval(Note firstNote, Note secondNote)
@@ -55,6 +61,26 @@ namespace EarTrainer
         {
             int distance = (first.Number - second.Number + 12) % 12;
             return GetIntervalName(distance);
+        }
+
+        public static IReadOnlyList<int> GetAllowedDistances(string difficulty)
+        {
+            switch (difficulty)
+            {
+                case "Easy":
+                    return EasyDistances;
+                case "Medium":
+                    return MediumDistances;
+                case "Hard":
+                default:
+                    return HardDistances;
+            }
+        }
+
+        private int GetRandomDistance(string difficulty)
+        {
+            IReadOnlyList<int> allowedDistances = GetAllowedDistances(difficulty);
+            return allowedDistances[random.Next(allowedDistances.Count)];
         }
     }
 }

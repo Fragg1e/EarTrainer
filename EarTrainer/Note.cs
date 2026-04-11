@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +36,12 @@ namespace EarTrainer
             int num = rnd.Next(notes.Count);
             Name = notes[num];
             Number = num;
+        }
+
+        public Note(int number)
+        {
+            Number = ((number % notes.Count) + notes.Count) % notes.Count;
+            Name = notes[Number];
         }
     }
 }

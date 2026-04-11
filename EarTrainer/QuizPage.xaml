@@ -28,7 +28,7 @@
                 Margin="0,140,0,0"
                 VerticalAlignment="Top"
                 Width="160"
-                Click="ReplayButton_Click"/>
+                Click="ReplayButton_Click" FontSize="17"/>
 
         <UniformGrid Rows="2" Columns="2"
                      HorizontalAlignment="Center"
@@ -51,8 +51,8 @@
 
         <TextBlock x:Name="Score"
                    Style="{StaticResource BodyTextStyle}"
-                   HorizontalAlignment="Left"
-                   Margin="648,137,0,0"
+                   HorizontalAlignment="Right"
+                   Margin="0,70,18,0"
                    VerticalAlignment="Top"
                    Width="119"
                    Height="53"/>
@@ -92,5 +92,11 @@
                 Margin="20,20,0,0"
                 VerticalAlignment="Top"
                 Click="Return_To_Menu_Click"/>
+        
+        <Label x:Name="DifficultyLabel"
+            Content="Easy"
+            Style="{StaticResource TextStyle}"
+            Margin="0,23,40,0"
+            FontSize="32" HorizontalAlignment="Right"/>
     </Grid>
 </Page>

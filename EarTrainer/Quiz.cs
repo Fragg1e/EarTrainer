@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +11,16 @@ namespace EarTrainer
         public Question[] Questions { get; set; }
         public int CurrentQuestionIndex { get; set; }
         public int Score { get; set; }
-
+        public string Difficulty { get; set; }
 
         public Quiz()
         {
+            Difficulty = Properties.Settings.Default.Difficulty;
             Questions = new Question[Properties.Settings.Default.NumberOfQuestions];
 
             for (int i = 0; i < Questions.Length; i++)
             {
-                Questions[i] = new Question();
+                Questions[i] = new Question(Difficulty);
             }
 
             CurrentQuestionIndex = 0;
@@ -34,7 +35,6 @@ namespace EarTrainer
             }
 
             return null;
-
         }
 
         public void MoveToNextQuestion()
@@ -46,7 +46,5 @@ namespace EarTrainer
         {
             return CurrentQuestionIndex >= Questions.Length;
         }
-
-        
     }
 }

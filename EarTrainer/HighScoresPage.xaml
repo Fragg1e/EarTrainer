@@ -23,13 +23,89 @@
                 Margin="20,20,0,0"
                 Click="Return_To_Menu_Click"/>
 
+        <Border Margin="40,95,40,0"
+                VerticalAlignment="Top"
+                Height="92"
+                Background="{StaticResource Surface}"
+                BorderBrush="{StaticResource SurfaceBorder}"
+                BorderThickness="1.5"
+                CornerRadius="14"
+                Padding="14,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.1*"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="0,0,16,0">
+                    <Label Content="Search Player"
+                           Style="{StaticResource TextStyle}"
+                           FontSize="18"/>
+                    <TextBox x:Name="PlayerSearchTextBox"
+                             Style="{StaticResource InputTextBoxStyle}"
+                             Height="34"
+                             FontSize="16"
+                             TextChanged="FilterControl_Changed"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="0,0,16,0">
+                    <Label Content="Difficulty"
+                           Style="{StaticResource TextStyle}"
+                           FontSize="18"/>
+                    <ComboBox x:Name="DifficultyFilterComboBox"
+                              Style="{StaticResource InputComboBoxStyle}"
+                              Height="34"
+                              FontSize="16"
+                              SelectionChanged="FilterControl_Changed">
+                        <ComboBoxItem Content="All Difficulties"
+                                      IsSelected="True"/>
+                        <ComboBoxItem Content="Easy"/>
+                        <ComboBoxItem Content="Medium"/>
+                        <ComboBoxItem Content="Hard"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            Margin="0,0,16,0">
+                    <Label Content="Sort By"
+                           Style="{StaticResource TextStyle}"
+                           FontSize="18"/>
+                    <ComboBox x:Name="SortByComboBox"
+                              Style="{StaticResource InputComboBoxStyle}"
+                              Height="34"
+                              FontSize="16"
+                              SelectionChanged="FilterControl_Changed">
+                        <ComboBoxItem Content="Highest Score"
+                                      IsSelected="True"/>
+                        <ComboBoxItem Content="Most Recent"/>
+                        <ComboBoxItem Content="Player Name"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button x:Name="ClearFiltersButton"
+                        Grid.Column="3"
+                        Content="Clear"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Width="90"
+                        Height="34"
+                        VerticalAlignment="Bottom"
+                        Click="ClearFiltersButton_Click"/>
+            </Grid>
+        </Border>
+
         <DataGrid x:Name="HighScoresDataGrid"
-                  Margin="40,100,40,40"
+                  Style="{StaticResource LeaderboardDataGridStyle}"
+                  ColumnHeaderStyle="{StaticResource LeaderboardColumnHeaderStyle}"
+                  CellStyle="{StaticResource LeaderboardCellStyle}"
+                  Margin="40,205,40,40"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
-                  HeadersVisibility="Column"
                   GridLinesVisibility="Horizontal">
 
             <DataGrid.Columns>

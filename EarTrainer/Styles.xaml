@@ -8,6 +8,12 @@
     <SolidColorBrush x:Key="PrimaryText" Color="White"/>
     <SolidColorBrush x:Key="MutedText" Color="#FFB8B5BC"/>
     <SolidColorBrush x:Key="ButtonBorder" Color="#FF111111"/>
+    <SolidColorBrush x:Key="Surface" Color="#FF2A2235"/>
+    <SolidColorBrush x:Key="SurfaceBorder" Color="#FF6F6A75"/>
+    <SolidColorBrush x:Key="LeaderboardHeader" Color="#FFBDB8C2"/>
+    <SolidColorBrush x:Key="LeaderboardRow" Color="#FF221B2D"/>
+    <SolidColorBrush x:Key="LeaderboardAltRow" Color="#FF2D2438"/>
+    <SolidColorBrush x:Key="LeaderboardGridLine" Color="#FF4A4352"/>
 
     <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="#FF111111"/>
@@ -111,5 +117,57 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Background" Value="{StaticResource PrimaryButton}"/>
+    </Style>
+
+    <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+        <Setter Property="Background" Value="{StaticResource Surface}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SurfaceBorder}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="CaretBrush" Value="{StaticResource PrimaryText}"/>
+    </Style>
+
+    <Style x:Key="InputComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+        <Setter Property="Background" Value="{StaticResource Surface}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SurfaceBorder}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Padding" Value="6,3"/>
+    </Style>
+
+    <Style x:Key="LeaderboardDataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="{StaticResource Surface}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SurfaceBorder}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="RowBackground" Value="{StaticResource LeaderboardRow}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource LeaderboardAltRow}"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource LeaderboardGridLine}"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{StaticResource LeaderboardGridLine}"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="AlternationCount" Value="2"/>
+    </Style>
+
+    <Style x:Key="LeaderboardColumnHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource LeaderboardHeader}"/>
+        <Setter Property="Foreground" Value="#FF111111"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SurfaceBorder}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <Style x:Key="LeaderboardCellStyle" TargetType="DataGridCell">
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryText}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryButtonPressed}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
