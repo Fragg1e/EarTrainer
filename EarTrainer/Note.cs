@@ -9,13 +9,12 @@ namespace EarTrainer
 
     public class Note 
     {
-        
         public string Name { get; set; }
         public int Number { get; set; }
 
-        private static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
-        public static Dictionary<int, string> notes = new Dictionary<int, string>
+        private static readonly Dictionary<int, string> notes = new Dictionary<int, string>
         {
             { 0,  "C"  },
             { 1,  "C#" },

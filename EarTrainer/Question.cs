@@ -46,9 +46,7 @@ namespace EarTrainer
             {
                 int j = random.Next(i + 1);
 
-                string temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                (array[j], array[i]) = (array[i], array[j]);
             }
         }
 

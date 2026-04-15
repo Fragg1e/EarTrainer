@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Runtime.Remoting.Contexts;
-
+﻿using System.Data.Entity;
 namespace EarTrainer
 {
     public class EarTrainerContext : DbContext
     {
-        public EarTrainerContext() : base("name=EarTrainerContext")
-        {
-        }
+        public EarTrainerContext() : base("name=EarTrainerContext") { }
 
         public DbSet<HighScore> HighScores { get; set; }
     }

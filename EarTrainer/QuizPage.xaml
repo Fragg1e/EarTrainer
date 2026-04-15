@@ -1,102 +1,38 @@
 <Page x:Class="EarTrainer.QuizPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:EarTrainer"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizPage">
 
+
     <Grid Background="{StaticResource Background}">
-        <Label x:Name="TitleLabel"
-               Content="Interval Quiz"
-               Style="{StaticResource TitleStyle}"
-               Margin="0,10,0,0"
-               FontSize="45"/>
+        <Label x:Name="TitleLabel" Content="Interval Quiz" Style="{StaticResource TitleStyle}" Margin="0,10,0,0" FontSize="45"/>
+        <TextBlock x:Name="QuestionNumberText" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top"/>
 
-        <TextBlock x:Name="QuestionNumberText"
-                   Style="{StaticResource BodyTextStyle}"
-                   HorizontalAlignment="Center"
-                   Margin="0,80,0,0"
-                   VerticalAlignment="Top"/>
+        <Button x:Name="ReplayButton" Content="Play Sound Again" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Center" Margin="0,140,0,0" VerticalAlignment="Top" Width="160" Click="ReplayButton_Click" FontSize="17"/>
 
-        <Button x:Name="ReplayButton"
-                Content="Play Sound Again"
-                Style="{StaticResource SecondaryButtonStyle}"
-                HorizontalAlignment="Center"
-                Margin="0,140,0,0"
-                VerticalAlignment="Top"
-                Width="160"
-                Click="ReplayButton_Click" FontSize="17"/>
-
-        <UniformGrid Rows="2" Columns="2"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Top"
-                     Margin="0,240,0,0"
-                     Width="500"
-                     Height="180">
-
+        <UniformGrid Rows="2" Columns="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,240,0,0" Width="500" Height="180">
             <Button x:Name="AnswerButton1" Style="{StaticResource AnswerButtonStyle}" Click="AnswerButton_Click"/>
             <Button x:Name="AnswerButton2" Style="{StaticResource AnswerButtonStyle}" Click="AnswerButton_Click"/>
             <Button x:Name="AnswerButton3" Style="{StaticResource AnswerButtonStyle}" Click="AnswerButton_Click"/>
             <Button x:Name="AnswerButton4" Style="{StaticResource AnswerButtonStyle}" Click="AnswerButton_Click"/>
         </UniformGrid>
 
-        <TextBlock x:Name="FeedbackText"
-                   Style="{StaticResource BodyTextStyle}"
-                   HorizontalAlignment="Center"
-                   Margin="0,203,0,0"
-                   VerticalAlignment="Top"/>
+        <TextBlock x:Name="FeedbackText" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Score" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" Width="119" Height="53"/>
+        <TextBlock x:Name="NamePromptText" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Center" Margin="0,255,0,0" VerticalAlignment="Top" Visibility="Collapsed" Text="Enter your name to save your score"/>
+        <TextBox x:Name="PlayerNameTextBox" HorizontalAlignment="Center" Margin="0,290,0,0" VerticalAlignment="Top" Width="220" Height="35" FontSize="18" Visibility="Collapsed"/>
 
-        <TextBlock x:Name="Score"
-                   Style="{StaticResource BodyTextStyle}"
-                   HorizontalAlignment="Right"
-                   Margin="0,70,18,0"
-                   VerticalAlignment="Top"
-                   Width="119"
-                   Height="53"/>
+        <Button x:Name="SaveScoreButton" Content="Save Score" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top" Width="140" Height="40" Visibility="Collapsed" Click="SaveScoreButton_Click"/>
+        <Button x:Name="Return_To_Menu" Content="Main Menu" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="Return_To_Menu_Click"/>
 
-        <TextBlock x:Name="NamePromptText"
-                   Style="{StaticResource BodyTextStyle}"
-                   HorizontalAlignment="Center"
-                   Margin="0,255,0,0"
-                   VerticalAlignment="Top"
-                   Visibility="Collapsed"
-                   Text="Enter your name to save your score"/>
+        <Label x:Name="DifficultyLabel" Content="Easy" Style="{StaticResource TextStyle}" Margin="0,23, 45,0" FontSize="32" HorizontalAlignment="Right"/>
 
-        <TextBox x:Name="PlayerNameTextBox"
-                 HorizontalAlignment="Center"
-                 Margin="0,290,0,0"
-                 VerticalAlignment="Top"
-                 Width="220"
-                 Height="35"
-                 FontSize="18"
-                 Visibility="Collapsed"/>
+        <Button x:Name="HighScoresBtn" Content="Leaderboard" Style="{StaticResource MenuButtonStyle}" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Click="HighScoresBtn_Click" FontSize="20" Height="68" Width="160" Visibility="Collapsed" />
 
-        <Button x:Name="SaveScoreButton"
-                Content="Save Score"
-                Style="{StaticResource SecondaryButtonStyle}"
-                HorizontalAlignment="Center"
-                Margin="0,340,0,0"
-                VerticalAlignment="Top"
-                Width="140"
-                Height="40"
-                Visibility="Collapsed"
-                Click="SaveScoreButton_Click"/>
-
-        <Button x:Name="Return_To_Menu"
-                Content="Main Menu"
-                Style="{StaticResource SecondaryButtonStyle}"
-                HorizontalAlignment="Left"
-                Margin="20,20,0,0"
-                VerticalAlignment="Top"
-                Click="Return_To_Menu_Click"/>
-        
-        <Label x:Name="DifficultyLabel"
-            Content="Easy"
-            Style="{StaticResource TextStyle}"
-            Margin="0,23,40,0"
-            FontSize="32" HorizontalAlignment="Right"/>
     </Grid>
 </Page>

@@ -1,6 +1,3 @@
 .vs/
-
-**/bin/
-**/obj/
-
 /EarTrainer/obj
+/EarTrainer/bin

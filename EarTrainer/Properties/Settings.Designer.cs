@@ -46,17 +46,5 @@ namespace EarTrainer.Properties {
                 this["Volume"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int NumberOfQuestions {
-            get {
-                return ((int)(this["NumberOfQuestions"]));
-            }
-            set {
-                this["NumberOfQuestions"] = value;
-            }
-        }
     }
 }

@@ -16,7 +16,20 @@ namespace EarTrainer
         public Quiz()
         {
             Difficulty = Properties.Settings.Default.Difficulty;
-            Questions = new Question[Properties.Settings.Default.NumberOfQuestions];
+            int numberOfQuestions = 0;
+            if(Difficulty == "Easy")
+            {
+                numberOfQuestions = 5;
+            }
+            else if(Difficulty == "Medium")
+                {
+                numberOfQuestions = 10;
+            }
+            else
+            {
+                numberOfQuestions = 15;
+            }
+            Questions = new Question[numberOfQuestions];
 
             for (int i = 0; i < Questions.Length; i++)
             {

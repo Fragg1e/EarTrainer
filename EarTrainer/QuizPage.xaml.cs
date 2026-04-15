@@ -37,7 +37,7 @@ namespace EarTrainer
 
             QuestionNumberText.Text = "Question " + (currentQuestionIndex + 1) + " of " + quiz.Questions.Length;
             FeedbackText.Text = "";
-            Score.Text = "Score: " + quiz.Score;
+            Score.Text = "Score: " + GetScorePercentage() + "%";
 
             AnswerButton1.Content = currentQuestion.Options[0];
             AnswerButton2.Content = currentQuestion.Options[1];
@@ -121,8 +121,8 @@ namespace EarTrainer
         private void ShowFinalResult()
         {
             QuestionNumberText.Text = "Quiz complete!";
-            FeedbackText.Text = $"Final score: {quiz.Score} / {quiz.Questions.Length}";
-            Score.Text = "Score: " + quiz.Score;
+            FeedbackText.Text = $"Final score: {GetScorePercentage()}%";
+            Score.Text = "Score: " + GetScorePercentage() + "%";
 
             AnswerButton1.Visibility = Visibility.Collapsed;
             AnswerButton2.Visibility = Visibility.Collapsed;
@@ -154,8 +154,7 @@ namespace EarTrainer
             {
                 HighScore highScore = new HighScore();
                 highScore.PlayerName = playerName;
-                highScore.Score = quiz.Score;
-                highScore.TotalQuestions = quiz.Questions.Length;
+                highScore.Score = GetScorePercentage();
                 highScore.Difficulty = Properties.Settings.Default.Difficulty;
                 highScore.DatePlayed = DateTime.Now;
 
@@ -163,15 +162,35 @@ namespace EarTrainer
                 db.SaveChanges();
             }
 
+            NamePromptText.Visibility = Visibility.Collapsed;
+            PlayerNameTextBox.Visibility = Visibility.Collapsed;
+            SaveScoreButton.Visibility = Visibility.Collapsed;
+            HighScoresBtn.Visibility = Visibility.Visible;
             scoreSaved = true;
             FeedbackText.Text = "Score saved for " + playerName;
             PlayerNameTextBox.IsEnabled = false;
             SaveScoreButton.IsEnabled = false;
+
         }
 
         private void Return_To_Menu_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MainMenu());
+        }
+
+        private void HighScoresBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new HighScoresPage());
+        }
+
+        private int GetScorePercentage()
+        {
+            if (quiz == null || quiz.Questions == null || quiz.Questions.Length == 0)
+            {
+                return 0;
+            }
+
+            return (int)Math.Round((double)quiz.Score * 100 / quiz.Questions.Length);
         }
     }
 }

@@ -5,6 +5,8 @@ namespace EarTrainer
 {
     public partial class SettingsPage : Page
     {
+        private bool isLoadingSettings;
+
         public SettingsPage()
         {
             InitializeComponent();
@@ -13,6 +15,7 @@ namespace EarTrainer
 
         private void LoadSettings()
         {
+            isLoadingSettings = true;
             Properties.Settings.Default.Reload();
 
             if (Properties.Settings.Default.Difficulty == "Easy")
@@ -30,13 +33,16 @@ namespace EarTrainer
 
             VolumeSlider.Value = Properties.Settings.Default.Volume * 100;
             VolumeTextBlock.Text = ((int)VolumeSlider.Value).ToString() + "%";
-
-            QuestionCountSlider.Value = Properties.Settings.Default.NumberOfQuestions;
-            QuestionCountTextBlock.Text = Properties.Settings.Default.NumberOfQuestions.ToString();
+            isLoadingSettings = false;
         }
 
         private void Difficulty_Checked(object sender, RoutedEventArgs e)
         {
+            if (isLoadingSettings)
+            {
+                return;
+            }
+
             if (EasyRadioButton.IsChecked == true)
             {
                 Properties.Settings.Default.Difficulty = "Easy";
@@ -55,23 +61,17 @@ namespace EarTrainer
 
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (isLoadingSettings)
+            {
+                return;
+            }
+
             if (VolumeTextBlock != null)
             {
                 VolumeTextBlock.Text = ((int)VolumeSlider.Value).ToString() + "%";
             }
 
             Properties.Settings.Default.Volume = VolumeSlider.Value / 100.0;
-            Properties.Settings.Default.Save();
-        }
-
-        private void QuestionCountSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (QuestionCountTextBlock != null)
-            {
-                QuestionCountTextBlock.Text = ((int)QuestionCountSlider.Value).ToString();
-            }
-
-            Properties.Settings.Default.NumberOfQuestions = (int)QuestionCountSlider.Value;
             Properties.Settings.Default.Save();
         }
 
