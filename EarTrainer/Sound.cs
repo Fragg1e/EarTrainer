@@ -10,9 +10,7 @@ namespace EarTrainer
         private static FadeInOutSampleProvider musicFader;
 
         public static void PlaySound(string file)
-        {
-            Console.WriteLine("Playing sound: " + file);
-            
+        {            
             output.Stop();
 
             var reader = new AudioFileReader($@"..\..\sounds/{file}.wav"); //gets the audio file        
@@ -24,8 +22,6 @@ namespace EarTrainer
             output.Init(musicFader); //initialises music 
 
             output.Play(); //starts it
-            
-            
         }
     }
 }
