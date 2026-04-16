@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace EarTrainer
 {
     public class Quiz
@@ -17,7 +11,10 @@ namespace EarTrainer
         {
             Difficulty = Properties.Settings.Default.Difficulty;
             int numberOfQuestions = 0;
-            if(Difficulty == "Easy")
+            CurrentQuestionIndex = 0;
+            Score = 0;
+
+            if (Difficulty == "Easy") //sets number of questions based on difficulty level
             {
                 numberOfQuestions = 5;
             }
@@ -29,15 +26,12 @@ namespace EarTrainer
             {
                 numberOfQuestions = 15;
             }
-            Questions = new Question[numberOfQuestions];
+            Questions = new Question[numberOfQuestions]; //creates a list with that many questions
 
             for (int i = 0; i < Questions.Length; i++)
             {
-                Questions[i] = new Question(Difficulty);
+                Questions[i] = new Question(); //actually creates the questions
             }
-
-            CurrentQuestionIndex = 0;
-            Score = 0;
         }
 
         public Question GetCurrentQuestion()

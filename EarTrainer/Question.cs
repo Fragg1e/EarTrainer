@@ -9,6 +9,7 @@ namespace EarTrainer
         public Interval Interval { get; set; }
         public string CorrectAnswer { get; set; }
         public List<string> Options { get; set; }
+        public string Difficulty { get; set; }
 
         public static Random random = new Random();
 
@@ -29,18 +30,14 @@ namespace EarTrainer
         };
 
         public Question()
-            : this(Properties.Settings.Default.Difficulty)
         {
-        }
-
-        public Question(string difficulty)
-        {
-            Interval = new Interval(difficulty);
+            Difficulty = Properties.Settings.Default.Difficulty;
+            Interval = new Interval();
             CorrectAnswer = Interval.Name;
-            Options = GenerateOptions(difficulty);
+            Options = GenerateOptions();
         }
 
-        public static void Shuffle(List<string> array)
+        public static void Shuffle(List<string> array) //randomises answers so correct answer isn't always in the same place
         {
             for (int i = array.Count() - 1; i > 0; i--)
             {
@@ -50,27 +47,28 @@ namespace EarTrainer
             }
         }
 
-        private List<string> GenerateOptions(string difficulty)
+        private List<string> GenerateOptions() //gets the correct answer and 3 random incorrect answers based on the difficulty level, then shuffles them before returning the list
         {
             List<string> selected = new List<string> { CorrectAnswer };
-            List<string> availableOptions = GetAvailableOptions(difficulty);
+            List<string> availableOptions = GetAvailableOptions();
 
             while (selected.Count < 4)
             {
                 string option = availableOptions[random.Next(availableOptions.Count)];
-                if (!selected.Contains(option))
+                if (!selected.Contains(option)) //ensures no duplicate options
                 {
                     selected.Add(option);
                 }
             }
 
             Shuffle(selected);
+
             return selected;
         }
 
-        private List<string> GetAvailableOptions(string difficulty)
+        private List<string> GetAvailableOptions() //filters options based on difficulty
         {
-            var allowedNames = Interval.GetAllowedDistances(difficulty)
+            var allowedNames = Interval.GetAllowedDistances(Difficulty)
                 .Select(Interval.GetIntervalName)
                 .Distinct()
                 .ToList();
@@ -80,7 +78,7 @@ namespace EarTrainer
                 .ToList();
         }
 
-        public override string ToString()
+        public override string ToString() //i used this for testing 
         {
             return $"Interval: {Interval.FirstNote.Name} to {Interval.SecondNote.Name} = {Interval.Name}";
         }

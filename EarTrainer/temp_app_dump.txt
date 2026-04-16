@@ -1,0 +1,21 @@
+using System.Data.Entity;
+using System.Windows;
+
+namespace EarTrainer
+{
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            Database.SetInitializer(
+                new CreateDatabaseIfNotExists<EarTrainerContext>());
+
+            using (EarTrainerContext db = new EarTrainerContext())
+            {
+                db.Database.Initialize(false);
+            }
+        }
+    }
+}

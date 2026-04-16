@@ -15,25 +15,20 @@ namespace EarTrainer
         {
             InitializeComponent();
 
-            quiz = new Quiz();
+            quiz = new Quiz(); //create new quiz instance
             LoadCurrentQuestion();
+            DifficultyText.Text = Properties.Settings.Default.Difficulty;
         }
 
-        private async void LoadCurrentQuestion()
+        private async void LoadCurrentQuestion() //loads current question into the UI
         {
-            if (quiz == null || quiz.Questions == null || currentQuestionIndex >= quiz.Questions.Length)
+            if (quiz == null || quiz.Questions == null || currentQuestionIndex >= quiz.Questions.Length) //checks if quiz is finished
             {
                 ShowFinalResult();
                 return;
             }
 
             Question currentQuestion = quiz.Questions[currentQuestionIndex];
-
-            if (currentQuestion == null)
-            {
-                ShowFinalResult();
-                return;
-            }
 
             QuestionNumberText.Text = "Question " + (currentQuestionIndex + 1) + " of " + quiz.Questions.Length;
             FeedbackText.Text = "";
@@ -44,22 +39,17 @@ namespace EarTrainer
             AnswerButton3.Content = currentQuestion.Options[2];
             AnswerButton4.Content = currentQuestion.Options[3];
 
-            await PlayCurrentQuestionSounds();
+            await PlaySounds();
         }
 
-        private async Task PlayCurrentQuestionSounds()
+        private async Task PlaySounds() //plays sounds for current question
         {
             Question currentQuestion = quiz.Questions[currentQuestionIndex];
 
-            if (currentQuestion == null)
-            {
-                return;
-            }
-
             DisableAnswerButtons();
-            Console.WriteLine("Question: " + currentQuestion.ToString());
+
             Sound.PlaySound(currentQuestion.Interval.FirstNote.Name);
-            await Task.Delay(1300);
+            await Task.Delay(1300); //using await to make sure the second note plays after first one is done
             Sound.PlaySound(currentQuestion.Interval.SecondNote.Name);
 
             EnableAnswerButtons();
@@ -68,13 +58,13 @@ namespace EarTrainer
         private async void ReplayButton_Click(object sender, RoutedEventArgs e)
         {
             FeedbackText.Text = "Replaying...";
-            await PlayCurrentQuestionSounds();
+            await PlaySounds();
             FeedbackText.Text = "";
         }
 
         private async void AnswerButton_Click(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = sender as Button;
+            Button clickedButton = sender as Button; //treats user click as a button object
 
             if (clickedButton == null)
             {
@@ -98,7 +88,7 @@ namespace EarTrainer
 
             await Task.Delay(2000);
 
-            currentQuestionIndex++;
+            currentQuestionIndex++; //moves on to next question
             LoadCurrentQuestion();
         }
 
@@ -118,21 +108,30 @@ namespace EarTrainer
             AnswerButton4.IsEnabled = true;
         }
 
+        private void CollapseQuizButtons()
+        {
+            AnswerButton1.Visibility = Visibility.Collapsed;
+            AnswerButton2.Visibility = Visibility.Collapsed;
+            AnswerButton3.Visibility = Visibility.Collapsed;
+            AnswerButton4.Visibility = Visibility.Collapsed;
+            ReplayButton.Visibility = Visibility.Collapsed;
+        }
+
+        
+
         private void ShowFinalResult()
         {
             QuestionNumberText.Text = "Quiz complete!";
             FeedbackText.Text = $"Final score: {GetScorePercentage()}%";
             Score.Text = "Score: " + GetScorePercentage() + "%";
 
-            AnswerButton1.Visibility = Visibility.Collapsed;
-            AnswerButton2.Visibility = Visibility.Collapsed;
-            AnswerButton3.Visibility = Visibility.Collapsed;
-            AnswerButton4.Visibility = Visibility.Collapsed;
-            ReplayButton.Visibility = Visibility.Collapsed;
+            CollapseQuizButtons();
+            
             NamePromptText.Visibility = Visibility.Visible;
             PlayerNameTextBox.Visibility = Visibility.Visible;
             SaveScoreButton.Visibility = Visibility.Visible;
-            PlayerNameTextBox.Focus();
+
+            PlayerNameTextBox.Focus(); //allows user to type straight away into name box
         }
 
         private void SaveScoreButton_Click(object sender, RoutedEventArgs e)
@@ -142,21 +141,23 @@ namespace EarTrainer
                 return;
             }
 
-            string playerName = PlayerNameTextBox.Text.Trim();
+            string playerName = PlayerNameTextBox.Text.Trim(); //trims removes unwanted whitespace
 
-            if (string.IsNullOrWhiteSpace(playerName))
+            if (string.IsNullOrWhiteSpace(playerName)) //prevents entry into the database with missing name
             {
                 FeedbackText.Text = "Enter a name first.";
                 return;
             }
 
-            using (EarTrainerContext db = new EarTrainerContext())
+            using (EarTrainerContext db = new EarTrainerContext()) //creates a new entry into the database 
             {
-                HighScore highScore = new HighScore();
-                highScore.PlayerName = playerName;
-                highScore.Score = GetScorePercentage();
-                highScore.Difficulty = Properties.Settings.Default.Difficulty;
-                highScore.DatePlayed = DateTime.Now;
+                HighScore highScore = new HighScore
+                {
+                    PlayerName = playerName,
+                    Score = GetScorePercentage(),
+                    Difficulty = Properties.Settings.Default.Difficulty,
+                    DatePlayed = DateTime.Now
+                };
 
                 db.HighScores.Add(highScore);
                 db.SaveChanges();
@@ -166,10 +167,9 @@ namespace EarTrainer
             PlayerNameTextBox.Visibility = Visibility.Collapsed;
             SaveScoreButton.Visibility = Visibility.Collapsed;
             HighScoresBtn.Visibility = Visibility.Visible;
+
             scoreSaved = true;
             FeedbackText.Text = "Score saved for " + playerName;
-            PlayerNameTextBox.IsEnabled = false;
-            SaveScoreButton.IsEnabled = false;
 
         }
 

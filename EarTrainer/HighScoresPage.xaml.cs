@@ -14,7 +14,7 @@ namespace EarTrainer
 
         private void LoadHighScores()
         {
-            using (EarTrainerContext db = new EarTrainerContext())
+            using (EarTrainerContext db = new EarTrainerContext()) //gets database context and displays the top 10 high scores in the datagrid
             {
                 var highScores = db.HighScores
                     .OrderByDescending(h => h.Score)

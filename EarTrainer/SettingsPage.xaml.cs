@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace EarTrainer
 {
     public partial class SettingsPage : Page
     {
-        private bool isLoadingSettings;
+        private bool isLoadingSettings = true;
 
         public SettingsPage()
         {

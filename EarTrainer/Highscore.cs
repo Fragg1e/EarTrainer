@@ -10,7 +10,7 @@ namespace EarTrainer
         public string Difficulty { get; set; }
         public DateTime DatePlayed { get; set; }
 
-        public string DatePlayedDisplay
+        public string DatePlayedDisplay //converts the date to a more readable format
         {
             get { return DatePlayed.ToString("dd/MM/yyyy HH:mm"); }
         }

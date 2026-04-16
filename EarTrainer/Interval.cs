@@ -9,8 +9,9 @@ namespace EarTrainer
         public Note SecondNote { get; set; }
         public string Name { get; set; }
 
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
 
+        //defines distances for each difficulty level
         private static readonly List<int> EasyDistances = new List<int> { 0, 1, 2, 3, 4, 5, 7 };
         private static readonly List<int> MediumDistances = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         private static readonly List<int> HardDistances = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
@@ -36,8 +37,7 @@ namespace EarTrainer
             }
         }
 
-        public Interval()
-            : this(Properties.Settings.Default.Difficulty)
+        public Interval(): this(Properties.Settings.Default.Difficulty) //using this to create interval based on current difficulty setting without having to specify it every time
         {
         }
 
@@ -50,7 +50,7 @@ namespace EarTrainer
             Name = GetIntervalName(distance);
         }
 
-        public static List<int> GetAllowedDistances(string difficulty)
+        public static List<int> GetAllowedDistances(string difficulty) //returns which list should be used based on difficulty level
         {
             switch (difficulty)
             {

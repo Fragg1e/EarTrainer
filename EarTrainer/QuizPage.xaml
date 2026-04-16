@@ -30,7 +30,7 @@
         <Button x:Name="SaveScoreButton" Content="Save Score" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top" Width="140" Height="40" Visibility="Collapsed" Click="SaveScoreButton_Click"/>
         <Button x:Name="Return_To_Menu" Content="Main Menu" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="Return_To_Menu_Click"/>
 
-        <Label x:Name="DifficultyLabel" Content="Easy" Style="{StaticResource TextStyle}" Margin="0,23, 45,0" FontSize="32" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="DifficultyText" Style="{StaticResource BodyTextStyle}" Margin="0,23, 45,0" FontSize="32" HorizontalAlignment="Right"/>
 
         <Button x:Name="HighScoresBtn" Content="Leaderboard" Style="{StaticResource MenuButtonStyle}" HorizontalAlignment="Center" Margin="0,307,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Click="HighScoresBtn_Click" FontSize="20" Height="68" Width="160" Visibility="Collapsed" />
 
